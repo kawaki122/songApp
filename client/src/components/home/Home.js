@@ -13,7 +13,7 @@ class Home extends Component {
               minHeight: 280,
             }}
           >
-            Content
+            Dashboard
           </Content>
         )
     }

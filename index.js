@@ -8,9 +8,11 @@ const routes = require('./routes/index.js');
 const app = express();
 const router = express.Router();
 
+const path = require('path')
 const environment = process.env.NODE_ENV; // development
 const stage = require('./config/config')[environment];
 
+app.use(express.static(path.join(__dirname, "client")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true

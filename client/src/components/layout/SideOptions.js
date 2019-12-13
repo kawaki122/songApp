@@ -5,19 +5,37 @@ import { Menu, Icon } from 'antd';
 const SideOptions=()=>{
     return(
         <div>
-          <div className="logo" />
+          <div className="logo"><h1 style={{color: '#ffffff'}}>Music App</h1></div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu.Item key="0">
+            <Link to="/">
+              <Icon type="dashboard" />
+              <span>Dashboard</span>
+              </Link>
+            </Menu.Item>
             <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
+            <Link to="/songs">
+              <Icon type="customer-service" />
+              <span>Songs</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
+            <Link to="/authors">
+              <Icon type="team" />
+              <span>Authors</span>
+              </Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
+              <Link to="/albums">
+              <Icon type="folder" />
+              <span>Albums</span>
+              </Link>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Link to="/users">
+              <Icon type="team" />
+              <span>Users</span>
+              </Link>
             </Menu.Item>
           </Menu>
         </div> 

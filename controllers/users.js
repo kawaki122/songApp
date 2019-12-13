@@ -75,17 +75,49 @@ module.exports = {
     },
     getAll: (req, res) => {
         result={};
-        dbConn.query('SELECT * FROM users', function (error, results) {
+        dbConn.query('SELECT * FROM users', function (error, users) {
             if (!error) {
-                const payload = req.decoded;
-                if (payload) {
-                    res.send(results);
-                } else {
-                    status = 401;
-                    result.status = status;
-                    result.error = `Authentication error`;
-                    res.status(status).send(result);
-                }
+                //const payload = req.decoded;
+                //if (payload) {
+                    console.log(users)
+                    res.send({users});
+                //} else {
+                //    status = 401;
+                //    result.status = status;
+                //    result.error = `Authentication error`;
+                //    res.status(status).send(result);
+                //}
+            } else {
+                status = 500;
+                result.status = status;
+                result.error = error;
+                console.log(error);
+                res.status(status).send(result);
+            }
+        });
+    },
+    getKeyVAl: (req, res) => {
+        result = {};
+        dbConn.query('SELECT id, name FROM users', function (error, results) {
+            if (!error) {
+                res.send({users: results});
+            } else {
+                status = 500;
+                result.status = status;
+                result.error = error;
+                console.log(error);
+                res.status(status).send(result);
+            }
+        });
+    },
+    delete: (req, res) => {
+        result = {};
+        let id = req.params.id;
+        dbConn.query(`DELETE FROM users where id='${id}'`, function (error, results) {
+            if (!error) {
+                result.status=200;
+                result.message="User deleted successfully!"
+                res.status(result.status).send(result);
             } else {
                 status = 500;
                 result.status = status;
